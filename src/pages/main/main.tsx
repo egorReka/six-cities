@@ -1,10 +1,10 @@
 import PlaceCard from '../../components/place-card/place-card';
 
 type MainProps = {
-  placeCardsCount: number;
+  offersCount: number;
 }
 
-function Main({placeCardsCount = 0}: MainProps): JSX.Element {
+function Main({offersCount = 0}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -77,7 +77,7 @@ function Main({placeCardsCount = 0}: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placeCardsCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -94,7 +94,7 @@ function Main({placeCardsCount = 0}: MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({ length: placeCardsCount }, (_, index: number) => <PlaceCard key={index} />)}
+                {Array.from({ length: offersCount }, (_, index: number) => <PlaceCard key={index} />)}
               </div>
             </section>
             <div className="cities__right-section">
