@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Offer } from '../../types/types';
 
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
@@ -10,20 +11,20 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
-  offersCount: number;
+  offers: Offer[];
 }
 
-function App({offersCount}: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Main offersCount={offersCount} />} />
+        <Route index element={<Main offers={offers} />} />
         <Route path={AppRoute.Login} element={<Login />} />
         <Route path={`${AppRoute.Property}/:id`} element={<Property />} />
         <Route path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <Favorites offers={offers}/>
             </PrivateRoute>
           }
         />
