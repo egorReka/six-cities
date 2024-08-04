@@ -26,7 +26,7 @@ export default function Form(): JSX.Element {
             <input
               className="form__rating-input visually-hidden"
               name="rating"
-              defaultValue={STARS_COUNT - i}
+              value={STARS_COUNT - i}
               id={`${STARS_COUNT - i}-stars`}
               type="radio"
               checked={rating === STARS_COUNT - i}
